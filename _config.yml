@@ -4,7 +4,7 @@ description: >-
   M365 Development MVP sharing insights on SharePoint Framework, React, TypeScript,
   Microsoft Graph, MCP, and modern Microsoft 365 development.
 url: "https://joaojmendes.github.io"
-baseurl: "/joaojmendes"
+baseurl: "/myblog"
 permalink: /blog/:year/:month/:day/:title/
 
 # Author
