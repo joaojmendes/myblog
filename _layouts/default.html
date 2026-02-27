@@ -8,6 +8,13 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
   {% seo %}
+  <script>
+    // Apply saved theme before paint to prevent flash
+    (function() {
+      var t = localStorage.getItem('theme-preference');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -17,6 +24,10 @@
         <a href="{{ '/' | relative_url }}">Home</a>
         <a href="{{ '/blog/' | relative_url }}">Blog</a>
         <a href="{{ '/about/' | relative_url }}">About</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun">&#9728;&#65039;</span>
+          <span class="icon-moon">&#127769;</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -32,5 +43,36 @@
       <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author.name }}. Built with <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://pages.github.com">GitHub Pages</a>.</p>
     </div>
   </footer>
+  <script>
+    (function() {
+      const toggle = document.getElementById('theme-toggle');
+      const root = document.documentElement;
+      const STORAGE_KEY = 'theme-preference';
+
+      // Apply saved preference on load
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        root.setAttribute('data-theme', saved);
+      }
+
+      toggle.addEventListener('click', function() {
+        const current = root.getAttribute('data-theme');
+        let next;
+
+        if (current === 'dark') {
+          next = 'light';
+        } else if (current === 'light') {
+          next = 'dark';
+        } else {
+          // No explicit theme set — check OS preference and toggle opposite
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          next = prefersDark ? 'light' : 'dark';
+        }
+
+        root.setAttribute('data-theme', next);
+        localStorage.setItem(STORAGE_KEY, next);
+      });
+    })();
+  </script>
 </body>
 </html>
