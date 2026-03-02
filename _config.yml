@@ -16,6 +16,10 @@ author:
   github: "joaojmendes"
   linkedin: "joaojosemendes"
 
+# Google Analytics (GA4)
+# Replace with your Measurement ID (e.g., G-XXXXXXXXXX)
+google_analytics: "G-ZJQPQLCGKL"
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
