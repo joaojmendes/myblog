@@ -16,6 +16,17 @@ author:
   github: "joaojmendes"
   linkedin: "joaojosemendes"
 
+# Giscus Comments (powered by GitHub Discussions)
+# Get repo-id and category-id from https://giscus.app
+giscus:
+  repo: "joaojmendes/myblog"
+  repo_id: "R_kgDORau4rQ"
+  category: "General"
+  category_id: "DIC_kwDORau4rc4C4HZh"
+  mapping: "pathname"
+  reactions_enabled: "1"
+  theme: "preferred_color_scheme"
+
 # Google Analytics (GA4)
 # Replace with your Measurement ID (e.g., G-XXXXXXXXXX)
 google_analytics: "G-42SNR7CFVX"
